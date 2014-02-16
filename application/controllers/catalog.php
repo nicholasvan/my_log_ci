@@ -29,6 +29,11 @@ class Catalog extends CI_Controller {
 	 */
 	public function index()
 	{
+        $this->load->database();
+        $this->db->query('select * from lualog order by err_id desc limit 10 offset 0');
+
+
+        die();
         $this->load->model('lua_log');
         $list = $this->lua_log->getList();
         echo "<pre>";
