@@ -31,21 +31,25 @@ class Catalog extends CI_Controller {
 	{
         $this->load->database();
         $query = $this->db->query('select * from lualog order by err_id desc limit 10 offset 0');
-        echo "<table>";
-        echo "<tr><th>ID</th><th>时间</th><th>平台</th><th>版本号</th><th>UID</th><th>PID</th><th>分区</th></tr>";
+        echo "<table border='1'>";
+        echo "<thead>";
+        echo "<tr><th>ID</th><th>时间</th><th>平台</th><th>版本号</th><th>错误信息</th><th>UID</th><th>PID</th><th>分区</th></tr>";
+        echo "<thead>";
+        echo "<tbody>";
         foreach ($query->result() as $row){
-            $error_id = $row['error_id'];
-            $time     = $row['time'];
-            $platform = $row['platform'];
-            $version  = $row['version'];
-            $function = $row['function'];
-            $uid      = $row['uid'];
-            $pid      = $row['pid'];
-            $sec      = $row['section'];
+            $error_id = $row->err_id;
+            $time     = $row->time;
+            $platform = $row->platform;
+            $version  = $row->version;
+            $function = $row->function;
+            $uid      = $row->uid;
+            $pid      = $row->pid;
+            $sec      = $row->section;
 
             echo "<tr><td>$error_id</td><td>$time</td><td>$platform</td><td>$version</td>
                 <td>$function</td><td>$uid</td><td>$pid</td><td>$sec</td></tr>";
         }
+        echo "</tbody>";
         echo "</table>";
         
         die();
