@@ -30,9 +30,24 @@ class Catalog extends CI_Controller {
 	public function index()
 	{
         $this->load->database();
-        $this->db->query('select * from lualog order by err_id desc limit 10 offset 0');
+        $query = $this->db->query('select * from lualog order by err_id desc limit 10 offset 0');
+        echo "<table>";
+        echo "<tr><th>ID</th><th>时间</th><th>平台</th><th>版本号</th><th>UID</th><th>PID</th><th>分区</th></tr>";
+        foreach ($query->result() as $row){
+            $error_id = $row['error_id'];
+            $time     = $row['time'];
+            $platform = $row['platform'];
+            $version  = $row['version'];
+            $function = $row['function'];
+            $uid      = $row['uid'];
+            $pid      = $row['pid'];
+            $sec      = $row['section'];
 
-
+            echo "<tr><td>$error_id</td><td>$time</td><td>$platform</td><td>$version</td>
+                <td>$function</td><td>$uid</td><td>$pid</td><td>$sec</td></tr>";
+        }
+        echo "</table>";
+        
         die();
         $this->load->model('lua_log');
         $list = $this->lua_log->getList();
