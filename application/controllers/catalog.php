@@ -29,6 +29,12 @@ class Catalog extends CI_Controller {
 	 */
 	public function index()
 	{
+
+        $this->load->model('lua_log');
+        $data['query'] = $this->lua_log->getList();
+        $this->load->view('lua_list', $data);
+        /*
+        die();
         $dis_number = 30;
         $offset = 0;
         $this->load->database();
@@ -61,6 +67,7 @@ class Catalog extends CI_Controller {
         var_dump($list);
         echo "</pre>";
 		//$this->load->view('welcome_message');
+         */
 	}
 }
 ?>

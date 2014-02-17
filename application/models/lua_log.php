@@ -18,14 +18,10 @@ class Lua_log extends CI_Model{
     }
          
 
-    public function getList(){
-        $query = $this->db->get('string_table_2');
-
-        foreach ($query->result() as $row)
-        {
-            $rows[] = $row;
-        }
-        return $rows;
+    public function getList($dis_number = 30, $offset = 0){
+        $this->load->database();
+        $query = $this->db->query("select * from lualog order by err_id desc limit $dis_number offset $offset");
+        return $query;
     }
 
     /**
