@@ -30,12 +30,54 @@ class Catalog extends CI_Controller {
 	public function index()
 	{
         $this->load->model('lua_log');
-        $data['query'] = $this->lua_log->getList();
+        if(isset($_GET['offset'])){
+            $offset = $_GET['offset'];
+        }else{
+            $offset = 0;
+        }
+
+        $data['query'] = $this->lua_log->getList(30, $offset);
+        $data['title'] = "错误报告系统";
         $this->load->view('lua_list', $data);
 	}
 
-    public function statistic(){
-        echo "wow";
+    public function topbug(){
+        $this->load->model('lua_log');
+        $data['query'] = $this->lua_log->getVersions(20, 'cnt');
+        $data['title'] = "最多错误统计详情";
+        $data['bugtype'] = "错误top";
+        $this->load->view('lua_sum', $data);
+    }
+
+    public function newest(){
+        $this->load->model('lua_log');
+        $data['query'] = $this->lua_log->getVersions();
+        $data['title'] = "最新版本统计详情";
+        $data['bugtype'] = "最新发布";
+        $this->load->view('lua_sum', $data);
+    }
+
+    public function detail(){
+        $this->load->model('lua_log');
+        $id = $_GET['id'];
+        $data['query'] = $this->lua_log->getErrorDetail($id);
+        $data['title'] = "错误详情";
+        $this->load->view('lua_detail', $data);
+    }
+
+    public function version(){
+        $this->load->model('lua_log');
+        $version = $_GET['ver'];
+        $data['query'] = $this->lua_log->getVersionSum($version);
+        $data['version'] = $version;
+        $this->load->view('lua_version',$data);
+        /*
+        echo "<pre>";
+        foreach($data['query']->result() as $row){
+            print_r($row);
+        }
+        echo "</pre>";
+         */
     }
 }
 ?>
