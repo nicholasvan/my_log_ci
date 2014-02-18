@@ -16,9 +16,9 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">游戏选择<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href=<?php echo $_SERVER['PHP_SELF']."?game=ares"?>>大掌门</a></li>
-                        <li><a href=<?php echo $_SERVER['PHP_SELF']."?game=hebe"?>>忍将</a></li>
-                        <li><a href=<?php echo $_SERVER['PHP_SELF']."?game=chaos"?>>乱世曲</a></li>
+                        <li><a href="?game=ares">大掌门</a></li>
+                        <li><a href="?game=hebe">忍将</a></li>
+                        <li><a href="?game=chaos">乱世曲</a></li>
                     </ul>
                 </li>
             </ul>
@@ -27,7 +27,6 @@
     <br />
     <br />
     <br />
-
 
 <?php
 $game = $_REQUEST['game'];
