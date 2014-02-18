@@ -58,7 +58,7 @@ p {
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>
 <pre>
-        <?php print_r($_SERVER); ?>
+        <?php //print_r($_SERVER); ?>
 </pre>
 	</div>
 </body>
