@@ -12,6 +12,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Catalog extends CI_Controller {
 
+    function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->game = $_REQUEST['game'];
+        if(empty($this->game)){
+            $this->game = "ares";
+        }
+    }
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -38,6 +47,7 @@ class Catalog extends CI_Controller {
 
         $data['query'] = $this->lua_log->getList(30, $offset);
         $data['title'] = "错误报告系统";
+        $data['game']  = $this->game;
         $this->load->view('lua_list', $data);
 	}
 
@@ -46,6 +56,7 @@ class Catalog extends CI_Controller {
         $data['query'] = $this->lua_log->getVersions(20, 'cnt');
         $data['title'] = "最多错误统计详情";
         $data['bugtype'] = "错误top";
+        $data['game']  = $this->game;
         $this->load->view('lua_sum', $data);
     }
 
@@ -54,6 +65,7 @@ class Catalog extends CI_Controller {
         $data['query'] = $this->lua_log->getVersions();
         $data['title'] = "最新版本统计详情";
         $data['bugtype'] = "最新发布";
+        $data['game']  = $this->game;
         $this->load->view('lua_sum', $data);
     }
 
@@ -62,6 +74,7 @@ class Catalog extends CI_Controller {
         $id = $_GET['id'];
         $data['query'] = $this->lua_log->getErrorDetail($id);
         $data['title'] = "错误详情";
+        $data['game']  = $this->game;
         $this->load->view('lua_detail', $data);
     }
 
@@ -70,6 +83,7 @@ class Catalog extends CI_Controller {
         $version = $_GET['ver'];
         $data['query'] = $this->lua_log->getVersionSum($version);
         $data['version'] = $version;
+        $data['game']  = $this->game;
         $this->load->view('lua_version',$data);
         /*
         echo "<pre>";
