@@ -41,6 +41,7 @@
 $route['default_controller'] = "catalog";
 $route['404_override'] = '';
 
+$route['catalog'] = "catalog/index";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

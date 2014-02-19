@@ -1,10 +1,5 @@
 <?php
     require 'framework/header.php';
-
-    $game = $_REQUEST['game'];
-    if(empty($game)){
-        $game = "ares";
-    }
 ?>
     <h1><?php echo $game;?> - Lua错误统计</h1>
     <?php //include "framework/lua_head.php";?>
@@ -17,7 +12,7 @@
         if($query->num_rows == 0){
             echo "<tr><td colspan=10><center><h2>没有查询到数据</h2></center></td></tr>";
         }else{
-            $ver_url = $this->config->item('base_url') . "/catalog/version/";
+            $ver_url = base_url("/catalog/version/?game=$game");
 
             foreach ($query->result() as $row){
                 $version  = $row->version;
@@ -41,7 +36,7 @@
                 }
                 if(is_numeric($cnt)){
                     
-                    $href = $ver_url."?ver=$ver";
+                    $href = $ver_url."&ver=$ver";
                     $content .= "<td><a href=$href>$ver : $cnt</a></td>";
                 }else{
                     $content .= "<td> - : - </td>";

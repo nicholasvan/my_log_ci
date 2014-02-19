@@ -43,10 +43,10 @@
         <h3>错误详情</h3>
 <?php
     $dir = $error_id % 64;
-    $file = $_SERVER['DOCUMENT_ROOT']."/ares/error_tracker/lualog/$dir/$error_id.log";
+    $file = $_SERVER['DOCUMENT_ROOT']."/ares/error_tracker/{$game}_lualog/$dir/$error_id.log";
     if(!file_exists($file)){
         $olddir = (int)($error_id / 1000);
-        $file = $_SERVER['DOCUMENT_ROOT']."/ares/error_tracker/lualog/$olddir/$error_id.log";
+        $file = $_SERVER['DOCUMENT_ROOT']."/ares/error_tracker/{$game}_lualog/$olddir/$error_id.log";
     }
     $content = file_get_contents($file);
     echo "<pre>";
@@ -54,6 +54,7 @@
     echo "</pre>";
 ?>
 
+<!--
         <ul class="pager">
             <li class="previous">
             <a href="#">&larr;最新</a>
@@ -65,4 +66,5 @@
             </li>
         </ul>
  
+-->
 <?php require 'framework/footer.php';?>
