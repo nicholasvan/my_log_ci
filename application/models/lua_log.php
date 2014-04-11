@@ -31,7 +31,7 @@ class Lua_log extends CI_Model{
         $q['platform'] = $_REQUEST['platform'];
         $q['uid']  = $_REQUEST['uid'];
         $q['pid']  = $_REQUEST['pid'];
-        $q['sec']  = $_REQUEST['section'];
+        $q['section']  = $_REQUEST['section'];
 
         //error_log(print_r($q,true));
         foreach($q as $key=>$value){
