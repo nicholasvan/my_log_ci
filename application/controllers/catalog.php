@@ -72,10 +72,14 @@ class Catalog extends CI_Controller {
     public function detail(){
         $this->load->model('lua_log');
         $id = $_GET['id'];
-        $data['query'] = $this->lua_log->getErrorDetail($id);
-        $data['title'] = "错误详情";
-        $data['game']  = $this->game;
-        $this->load->view('lua_detail', $data);
+        if($id){
+            $data['query'] = $this->lua_log->getErrorDetail($id);
+            $data['title'] = "错误详情";
+            $data['game']  = $this->game;
+            $this->load->view('lua_detail', $data);
+        }else{
+            $this->index();
+        }
     }
 
     public function version(){
