@@ -25,6 +25,7 @@
                         <li><a href="?game=ares">大掌门</a></li>
                         <li><a href="?game=hebe">忍将</a></li>
                         <li><a href="?game=luanshiqu">乱世曲</a></li>
+                        <li><a href="?game=saiya">龙珠</a></li>
                     </ul>
                 </li>
             </ul>

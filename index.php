@@ -192,6 +192,9 @@ if (defined('ENVIRONMENT'))
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
 
+include '/mnt/log.playcrab.com/ares/xhprof.php';
+//XHPROF::enable();
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
@@ -204,3 +207,4 @@ require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */
+XHPROF::disable();
